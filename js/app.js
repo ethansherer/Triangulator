@@ -140,7 +140,8 @@ async function heading1() {
         if (!response.ok) {
             throw new Error(`${response.status}`)
         }
-        const data = await response.json()
+        const data = await response
+        console.log(data)
         return data
     } catch (error) {
         console.error(error)

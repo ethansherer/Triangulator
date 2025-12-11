@@ -132,7 +132,15 @@ async function addMarkerPos1() {
                 title: "Position 1",
                 content: pin1.element
             });
-            doPath1()
+            // doPath1()
+            path1 = new google.maps.Polyline({
+                path: [{ lat: streetLat, lng: streetLng },{ lat: 38.246635658695055, lng: -85.76662857935253 }],
+                geodesic: true,
+                strokeColor: "#f54242",
+                strokeOpacity: 1.0,
+                strokeWeight: 2,
+            });
+            path1.setMap(map)
             addPos1()
             isPos1 = true
             if (isPos1 && isPos2) {
@@ -168,7 +176,7 @@ async function addMarkerPos2() {
                 title: "Position 2",
                 content: pin2.element
             });
-            doHeading2()
+            // doPath2()
             path2 = new google.maps.Polyline({
                 path: [{ lat: streetLat, lng: streetLng },{ lat: 38.246635658695055, lng: -85.76662857935253 }],
                 geodesic: true,
@@ -207,7 +215,6 @@ async function doPath1() {
     headingA = await heading1()
     latA = headingA[0]
     latB = headingA[1]
-    console.log(latA)
     path1 = new google.maps.Polyline({
         path: [{ lat: streetLat, lng: streetLng },{ lat: latA, lng: latB }],
         geodesic: true,
@@ -218,7 +225,7 @@ async function doPath1() {
     path1.setMap(map)
 }
 
-async function doHeading2() {
+async function doPath2() {
 
 }
 
