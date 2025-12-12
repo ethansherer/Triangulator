@@ -244,6 +244,24 @@ async function addMarkerPos3() {
             content: pin3.element
         });
         addPos3()
+        path1.setMap(null)
+        path2.setMap(null)
+        path1 = new google.maps.Polyline({
+            path: [{ lat: marker1.position.lat, lng: marker1.position.lng },{ lat: lat3, lng: lng3 }],
+            geodesic: true,
+            strokeColor: "#f54242",
+            strokeOpacity: 1.0,
+            strokeWeight: 2,
+        });
+        path1.setMap(map)
+        path2 = new google.maps.Polyline({
+            path: [{ lat: marker2.position.lat, lng: marker2.position.lng },{ lat: lat3, lng: lng3 }],
+            geodesic: true,
+            strokeColor: "#4287f5",
+            strokeOpacity: 1.0,
+            strokeWeight: 2,
+        });
+        path2.setMap(map)
         isPos3 = true
     } else {
         marker3.setMap(null)
@@ -251,4 +269,11 @@ async function addMarkerPos3() {
         isPos3 = false
         addMarkerPos3()
     }
+}
+
+function reset(){
+    map.setMap(null)
+    removePos1()
+    removePos2()
+    removePos3()
 }

@@ -68,7 +68,6 @@ function addPos1() {
     pos1Ul.innerHTML += `<li><strong>Position</strong>: ${streetLat1},${streetLng1}</li>`
     pos1Ul.innerHTML += `<li><strong>Heading</strong>: ${streetHeading1}</li>`
     pos1Ul.innerHTML += `<li><strong>Pitch</strong>: ${streetPitch1}</li>`
-    pos1Ul.innerHTML += `<li><strong>Distance</strong>: </li>`
     pos1Container.appendChild(pos1Ul)
 }
 
@@ -87,7 +86,6 @@ function addPos2() {
     pos2Ul.innerHTML += `<li><strong>Position</strong>: ${streetLat2},${streetLng2}</li>`
     pos2Ul.innerHTML += `<li><strong>Heading</strong>: ${streetHeading2}</li>`
     pos2Ul.innerHTML += `<li><strong>Pitch</strong>: ${streetPitch2}</li>`
-    pos2Ul.innerHTML += `<li><strong>Distance</strong>: </li>`
     pos2Container.appendChild(pos2Ul)
 }
 
@@ -98,59 +96,46 @@ function addPos3() {
     pos3Container = document.createElement('div')
     pos3Container.setAttribute('id','pos3Container')
     pos3Div.appendChild(pos3Container)
-    pos3Container.innerHTML += '<h2>Triangulated Point</h2>'
+    pos3Container.innerHTML += '<h2>Position 3: Triangulated Point</h2>'
     pos3Ul = document.createElement('ul')
     pos3Ul.setAttribute('id','pos3Ul')
     pos3Ul.innerHTML += `<li><strong>Position</strong>: ${streetLat3},${streetLng3}</li>`
     pos3Container.appendChild(pos3Ul)
+    hDistance1 = haversineDistance(streetLat1,streetLng1,streetLat3,streetLng3)
+    pos1Ul = document.getElementById('pos1Ul')
+    pos1Ul.innerHTML += `<li><strong>Distance</strong>: ${hDistance1}</li>`
+    hDistance2 = haversineDistance(streetLat2,streetLng2,streetLat3,streetLng3)
+    pos2Ul = document.getElementById('pos2Ul')
+    pos2Ul.innerHTML += `<li><strong>Distance</strong>: ${hDistance2}</li>`
 }
 
 function removePos1() {
-    document.getElementById("pos1Container").remove()
-    removePos3()
+    if(document.getElementById("pos1Container")){
+        document.getElementById("pos1Container").remove()}
+    if (document.getElementById("pos2Ul")){
+        document.getElementById("pos2Ul").removeChild(document.getElementById("pos2Ul").lastElementChild)}
+    if (document.getElementById("pos3Ul")){
+        removePos3()}
+
 }
 
 function removePos2() {
-    document.getElementById("pos2Container").remove()
-    removePos3()
+    if (document.getElementById("pos2Container")){
+        document.getElementById("pos2Container").remove()}
+    if (document.getElementById("pos1Ul")){
+        document.getElementById("pos1Ul").removeChild(document.getElementById("pos1Ul").lastElementChild)}
+    if (document.getElementById("pos3Ul")){
+        removePos3()}
 }
 
 function removePos3() {
-    document.getElementById("pos3Container").remove()
+    if (document.getElementById("pos3Container")){
+    document.getElementById("pos3Container").remove()}
 }
 
 async function triangulate() {
     try {
         const url = "http://localhost:4000/?lat1=" + streetLat1 + "&lng1=" + streetLng1 + "&ang1=" + streetHeading1 + "&lat2=" + streetLat2 + "&lng2=" + streetLng2 + "&ang2=" + streetHeading2
-        const response = await fetch(url)
-        if (!response.ok) {
-            throw new Error(`${response.status}`)
-        }
-        const data = await response.json()
-        return data
-    } catch (error) {
-        console.error(error)
-    }
-}
-
-async function heading1() {
-    try {
-        const url = "http://localhost:5000/?lat1=" + streetLat1 + "&lng1=" + streetLng1 + "&ang1=" + streetHeading1 + "&dist1=" + "50"
-        const response = await fetch(url)
-        if (!response.ok) {
-            throw new Error(`${response.status}`)
-        }
-        const data = await response
-        console.log(data)
-        return data
-    } catch (error) {
-        console.error(error)
-    }
-}
-
-async function heading2() {
-    try {
-        const url = "http://localhost:5000/?lat1=" + streetLat2 + "&lng1=" + streetLng2 + "&ang1=" + streetHeading2 + "&dist1=" + "50"
         const response = await fetch(url)
         if (!response.ok) {
             throw new Error(`${response.status}`)
@@ -168,6 +153,10 @@ function degToRad(deg){
 
 function radToDeg(rad){
     return (rad/Math.PI) * 180
+}
+
+function haversineDistance(lat1,lng1,lat2,lng2){
+    return Math.acos(Math.cos(degToRad(90 - lat1))*Math.cos(degToRad(90-lat2))+Math.sin(degToRad(90-lat1))*Math.sin(degToRad(90-lat2))*Math.cos(degToRad(lng1-lng2)))*20902230.97
 }
 
 function addPath1(){
@@ -214,4 +203,10 @@ function addPath2(){
             newLng = lng1 + Math.atan2(Math.sin(ang1) * Math.sin(dist1) * Math.cos(lat1), Math.cos(dist1) - Math.sin(lat1) * Math.sin(newLat))
             return [radToDeg(newLat),radToDeg(newLng)]
         }
+}
+
+function reset(){
+    removePos1()
+    removePos2()
+    removePos3()
 }
