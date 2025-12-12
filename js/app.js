@@ -161,3 +161,57 @@ async function heading2() {
         console.error(error)
     }
 }
+
+function degToRad(deg){
+    return (deg/180) * Math.PI
+}
+
+function radToDeg(rad){
+    return (rad/Math.PI) * 180
+}
+
+function addPath1(){
+    let lat1 = Number(streetLat1);
+    let lng1 = Number(streetLng1);
+    let ang1 = Number(streetHeading1);
+    let dist1 = Number(50);
+        if 
+            ((Number.isNaN(lat1)||Number.isNaN(lng1)||Number.isNaN(ang1)||Number.isNaN(dist1))|| 
+            (lat1<-90)||(lat1>90) ||(lng1>180)||(lng1<-180)||
+            (ang1<0) ||
+            (ang1>360) ||
+            (dist1<0)) 
+        { return `Bad input. Please use correct a set of valid coordinates/direction.`
+        } else {
+            lat1 = degToRad(lat1)
+            lng1 = degToRad(lng1)
+            ang1 = degToRad(ang1)
+            dist1 = dist1/20925524
+            newLat = Math.asin(Math.sin(lat1) * Math.cos(dist1) + Math.cos(lat1) * Math.sin(dist1) * Math.cos(ang1))
+            newLng = lng1 + Math.atan2(Math.sin(ang1) * Math.sin(dist1) * Math.cos(lat1), Math.cos(dist1) - Math.sin(lat1) * Math.sin(newLat))
+            return [radToDeg(newLat),radToDeg(newLng)]
+        }
+}
+
+function addPath2(){
+    let lat1 = Number(streetLat2);
+    let lng1 = Number(streetLng2);
+    let ang1 = Number(streetHeading2);
+    let dist1 = Number(50);
+        if 
+            ((Number.isNaN(lat1)||Number.isNaN(lng1)||Number.isNaN(ang1)||Number.isNaN(dist1))|| 
+            (lat1<-90)||(lat1>90) ||(lng1>180)||(lng1<-180)||
+            (ang1<0) ||
+            (ang1>360) ||
+            (dist1<0)) 
+        { return `Bad input. Please use correct a set of valid coordinates/direction.`
+        } else {
+            lat1 = degToRad(lat1)
+            lng1 = degToRad(lng1)
+            ang1 = degToRad(ang1)
+            dist1 = dist1/20925524
+            newLat = Math.asin(Math.sin(lat1) * Math.cos(dist1) + Math.cos(lat1) * Math.sin(dist1) * Math.cos(ang1))
+            newLng = lng1 + Math.atan2(Math.sin(ang1) * Math.sin(dist1) * Math.cos(lat1), Math.cos(dist1) - Math.sin(lat1) * Math.sin(newLat))
+            return [radToDeg(newLat),radToDeg(newLng)]
+        }
+}

@@ -59,8 +59,7 @@ let isPos3 = false
 let pos3
 let lat3
 let lng3
-let latA
-let latB
+let pathHeading
 
 async function initMap() {
     const { Map } = await google.maps.importLibrary('maps')
@@ -132,16 +131,16 @@ async function addMarkerPos1() {
                 title: "Position 1",
                 content: pin1.element
             });
-            // doPath1()
+            addPos1()
+            pathHeading = addPath1()
             path1 = new google.maps.Polyline({
-                path: [{ lat: streetLat, lng: streetLng },{ lat: 38.246635658695055, lng: -85.76662857935253 }],
+                path: [{ lat: streetLat, lng: streetLng },{ lat: pathHeading[0], lng: pathHeading[1] }],
                 geodesic: true,
                 strokeColor: "#f54242",
                 strokeOpacity: 1.0,
                 strokeWeight: 2,
             });
             path1.setMap(map)
-            addPos1()
             isPos1 = true
             if (isPos1 && isPos2) {
                 doTriangulate()
@@ -176,16 +175,16 @@ async function addMarkerPos2() {
                 title: "Position 2",
                 content: pin2.element
             });
-            // doPath2()
+            addPos2()
+            pathHeading = addPath2()
             path2 = new google.maps.Polyline({
-                path: [{ lat: streetLat, lng: streetLng },{ lat: 38.246635658695055, lng: -85.76662857935253 }],
+                path: [{ lat: streetLat, lng: streetLng },{ lat: pathHeading[0], lng: pathHeading[1] }],
                 geodesic: true,
                 strokeColor: "#4287f5",
                 strokeOpacity: 1.0,
                 strokeWeight: 2,
             });
             path2.setMap(map)
-            addPos2()
             isPos2 = true
             if (isPos1 && isPos2) {
                 doTriangulate()
