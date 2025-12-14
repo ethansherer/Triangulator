@@ -208,6 +208,6 @@ function addPath2(){
 }
 
 function startMe(){
-    document.getElementById('startDiv').style.visibility = 'hidden'
-    document.getElementById('mainDiv').style.visibility = 'visible'
+    document.getElementById('padding').style.display = 'none'
+    document.getElementById('mainDiv').style.display = 'flex'
 }
