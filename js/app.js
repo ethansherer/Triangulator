@@ -102,9 +102,11 @@ function addPos3() {
     pos3Ul.innerHTML += `<li><strong>Position</strong>: ${streetLat3},${streetLng3}</li>`
     pos3Container.appendChild(pos3Ul)
     hDistance1 = haversineDistance(streetLat1,streetLng1,streetLat3,streetLng3)
+    hDistance1 = Math.round(hDistance1 * 100) / 100
     pos1Ul = document.getElementById('pos1Ul')
     pos1Ul.innerHTML += `<li><strong>Distance</strong>: ${hDistance1}</li>`
     hDistance2 = haversineDistance(streetLat2,streetLng2,streetLat3,streetLng3)
+    hDistance2 = Math.round(hDistance2 * 100) / 100
     pos2Ul = document.getElementById('pos2Ul')
     pos2Ul.innerHTML += `<li><strong>Distance</strong>: ${hDistance2}</li>`
 }
@@ -205,8 +207,7 @@ function addPath2(){
         }
 }
 
-function reset(){
-    removePos1()
-    removePos2()
-    removePos3()
+function startMe(){
+    document.getElementById('startDiv').style.visibility = 'hidden'
+    document.getElementById('mainDiv').style.visibility = 'visible'
 }

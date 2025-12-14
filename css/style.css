@@ -1,8 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+
 body {
-    border: solid black 1px;
+    /* border: solid rgb(23, 157, 247) 1px; */
+
+    background-color: #5379AE;
     height: 1000px;
 }
 
-#map {
-    height: 400px;
+header {
+    background-color: #262B40;
+    color: #A8C4EC;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 10;
 }
+
+#startDiv {
+    position: absolute;
+    background-color: white;
+    height: 500px;
+    width: 100%;
+    padding: 10px;
+    margin: 10px;
+    box-shadow: 8px 8px 5px rgba(0, 0, 0, 0.322);
+    border-radius: 4px;
+}
+
+#mainDiv {
+    display: flex;
+    visibility: hidden;
+}
+
+#mapContainer,#infoContainer{
+    position: relative;
+    padding: 12px;
+    width: calc(50% - 10px);
+    height: 500px;
+
+}
+
+#info {
+    /* padding: 10px; */
+    background-color: #A8C4EC;
+    border: solid #A8C4EC 1px;
+    width: 100%;
+    height: 100%;
+    box-shadow: 8px 8px 5px rgba(0, 0, 0, 0.322);
+    border-radius: 4px;
+
+}
+
+#map {
+    width: 100%;
+    height: 100%;
+    box-shadow: 8px 8px 5px rgb(0, 0, 0, 0.322);
+    border-radius: 4px;
+}
+
+#buttonDiv{
+    cursor: pointer;
+    display: flex;
+    flex-wrap: wrap;
+    font-family: "Roboto", sans-serif;
+    font-feature-settings: normal;
+    font-kerning: auto;
+    font-language-override: normal;
+    font-optical-sizing: auto;
+    font-size: 11px;
+    font-size-adjust: none;
+    font-stretch: 100%;
+    font-style: normal;
+
+
+    margin: 10px;
+    visibility: hidden;
+    position:absolute;
+    left: 15px;
+    top: 100px;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    color: black;
+    pointer-events: none;
+}
+
+#pos1Button,#pos2Button {
+    /* visibility: visible;
+    position:absolute;
+    left: 15px;
+    top: 80px;
+    width: 20px;
+    height: 20px; */
+    z-index: 10;
+    font-family: "Roboto", sans-serif;
+    /* text-align: center;
+    font-family: Roboto, Arial, sans-serif;
+    font-size: 11px;
+    color: black;
+    pointer-events: none; */
+}
+
+#crosshair {
+    position:absolute;
+    left: calc(50% - 15px);
+    top: calc(50% - 15px);
+    width: 20px;
+    height: 20px;
+    z-index: 10;
+    text-align: center;
+    font-size: 30px;
+    color: #ff0000;
+    pointer-events: none;
+    visibility: hidden;
+}
+
+@media (max-width: 800px) {
+    #mainDiv {
+        display: block;
+    }
+    #mapContainer,#infoContainer {
+        width: 100%;
+    }
+  }

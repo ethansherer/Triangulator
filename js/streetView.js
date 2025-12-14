@@ -92,16 +92,15 @@ async function initMap() {
         streetPitch = JSON.stringify(streetViewPanorama.getPov().pitch)
     });
 
-    // google.maps.event.addListener(streetViewPanorama, 'visible_changed', function() {
-    //     if (this.getVisible()) {
-        //         console.log('User has entered Street View');
-
-    //     } else {
-        //         console.log('User has exited Street View and returned to the map');
-    //         google.maps.event.clearListeners(streetViewPanorama, 'position_changed')
-    //         google.maps.event.clearListeners(streetViewPanorama, 'pov_changed')
-    //     }
-    // });
+    google.maps.event.addListener(streetViewPanorama, 'visible_changed', function() {
+        if (this.getVisible()) {
+            document.getElementById("crosshair").style.visibility = "visible"
+            document.getElementById("buttonDiv").style.visibility = "visible"
+        } else {
+            document.getElementById("crosshair").style.visibility = "hidden"
+            document.getElementById("buttonDiv").style.visibility = "hidden"
+        }
+    });
 }
 
 initMap();
@@ -272,7 +271,6 @@ async function addMarkerPos3() {
 }
 
 function reset(){
-    map.setMap(null)
     removePos1()
     removePos2()
     removePos3()

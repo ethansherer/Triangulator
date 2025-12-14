@@ -8,21 +8,37 @@
     </head>
     <body>
         <main>
-            <h1>hello world</h1>
-            <div id="map"></div>
-            <button onclick=returnCoords()>Test Coords</button>
-            <button onclick=testAPIs()>Test APIs</button>
-            <button onclick=addMarkerPos1()>Set Pos 1</button>
-            <button onclick=addMarkerPos2()>Set Pos 2</button>
-            <button onclick=reset()>Reset</button>
-            <div>
-                <div id="pos1"></div>
+            <header>
+                <h1>The Triangulator</h1>
+            </header>
+            <div id="startDiv">
+                <button id="startButton" onclick=startMe()>Start</button>
             </div>
-            <div>
-                <div id="pos2"></div>
-            </div>
-            <div>
-                <div id="pos3"></div>
+            <div id="mainDiv">
+                <div id="mapContainer">
+                    <div id="map"></div>
+                    <div id="crosshair">+</div>
+                    <div id="buttonDiv">
+                        <button id="pos1Button" onclick=addMarkerPos1()>Set Pos 1</button>
+                        <button id="pos2Button" onclick=addMarkerPos2()>Set Pos 2</button>
+                    </div>
+                </div>
+                <!-- <button onclick=returnCoords()>Test Coords</button>
+                <button onclick=testAPIs()>Test APIs</button> -->
+                <!-- <button onclick=reset()>Reset</button> -->
+                <div id="infoContainer">
+                    <div id="info">
+                        <div class="infoCard">
+                            <div id="pos1"></div>
+                        </div>
+                        <div class="infoCard">
+                            <div id="pos2"></div>
+                        </div>
+                        <div class="infoCard">
+                            <div id="pos3"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </main>
             <script src="js/key.js"></script>
