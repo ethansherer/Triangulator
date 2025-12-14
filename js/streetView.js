@@ -66,8 +66,9 @@ async function initMap() {
     
     map = new Map(document.getElementById("map"), {
         center: { lat: 38.246635658695055, lng:-85.76662857935253 },
-        zoom: 19,
-        mapId: "TRIANGULATOR"
+        zoom: 12,
+        mapId: "TRIANGULATOR",
+
     });
 
     // innerMap = map.innerMap
