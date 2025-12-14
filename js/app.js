@@ -209,5 +209,5 @@ function addPath2(){
 
 function startMe(){
     document.getElementById('padding').style.display = 'none'
-    document.getElementById('mainDiv').style.display = 'flex'
+    document.getElementById('mainDiv').classList.toggle('is-hidden')
 }
