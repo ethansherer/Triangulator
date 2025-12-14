@@ -117,45 +117,40 @@ h1 {
 
 #buttonDiv{
     cursor: pointer;
-    display: flex;
-    flex-wrap: wrap;
+    display: block;
     font-family: "Roboto", sans-serif;
-    font-feature-settings: normal;
-    font-kerning: auto;
-    font-language-override: normal;
-    font-optical-sizing: auto;
-    font-size: 11px;
-    font-size-adjust: none;
-    font-stretch: 100%;
-    font-style: normal;
-
-
+    z-index: 1000000;
     margin: 10px;
     visibility: hidden;
     position:absolute;
     left: 15px;
     top: 100px;
-    width: 20px;
-    height: 20px;
     text-align: center;
     color: black;
     pointer-events: none;
 }
 
 #pos1Button,#pos2Button {
-    /* visibility: visible;
-    position:absolute;
-    left: 15px;
-    top: 80px;
-    width: 20px;
-    height: 20px; */
-    z-index: 10;
+    background-color: rgb(255,255,255);
+    background-clip: padding-box;
+    border: 0px;
+    display: table-cell;
+    padding-left: 23px;
+    padding-right: 23px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-wrap: nowrap;
+    min-width: 60px;
+    z-index: 1000000;
     font-family: "Roboto", sans-serif;
-    /* text-align: center;
-    font-family: Roboto, Arial, sans-serif;
-    font-size: 11px;
+    font-size: 18px;
+    font-weight: 500;
     color: black;
-    pointer-events: none; */
+    pointer-events: none;
+}
+
+#pos1Button:hover {
+    background-color: #575757;
 }
 
 #crosshair {
@@ -166,6 +161,7 @@ h1 {
     height: 20px;
     z-index: 10;
     text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 30px;
     color: #ff0000;
     pointer-events: none;
