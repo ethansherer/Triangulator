@@ -11,30 +11,8 @@
     </header>
     <body>
         <main>
-            <div id="padding">
-                <div id="startDiv">
-                    <div id="textBox">
-                        <div>Welcome to the Triangulator! An easy-to-use tool that allows you to triangulate anything from two different positions.</div>
-                        <p></p>
-                        <div><u>To use this tool:</u></div>
-                        <p></p>
-                        <div>1. Enter Google Street View using the <img src="/street-view-icon.jpg"> icon and locate something of interest. Center your crosshairs on the object and click "Set Pos 1".</div>
-                        <p></p>
-                        <div>2. Move to another position in Street View and center your crosshairs on the same object. Click "Set Pos 2" and the triangulated position will be calculated automatically.</div>
-                        <p></p>
-                        <div>Congratulations! You can now view your triangulated point by exiting Street View.</div>
-                    </div>
-                    <button id="startButton" onclick=startMe()>Start</button>
-                </div>
-            </div>
             <div id="mainDiv" class="is-hidden">
                     <div id="mapContainer">
-                        <input
-                        id="pac-input"
-                        class="controls"
-                        type="text"
-                        placeholder="Search Box"
-                        />
                         <div id="map"></div>
                         <div id="crosshair">+</div>
                         <div id="buttonDiv">
@@ -42,6 +20,7 @@
                             <button id="pos2Button" onclick=addMarkerPos2()>Set Pos 2</button>
                         </div>
                         <button id="resetButton" onclick=reset()>Reset</button>
+                        <button id="clearButton" onclick=clearMarkers()>Clear Markers</button>
                     </div>
                 <div id="infoContainer">
                     <div id="info">
@@ -61,9 +40,6 @@
             <script src="js/key.js"></script>
             <script src="js/streetView.js"></script>
             <script src="js/app.js"></script>
-            
-            <!-- <script src="maps.googleapis.com" defer></script>
-            <script src="test.js"></script> -->
     </body>
     <footer>
         <div>Designed by Ethan Sherer</div>

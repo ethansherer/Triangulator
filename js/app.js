@@ -10,49 +10,6 @@ let streetPitch2
 let streetLat3
 let streetLng3
 
-function testTriangulate() {
-    var requestOptions = {
-        method: 'GET',
-        redirect: 'follow'
-      };
-
-      let lat1 = "38.8895"
-      let lng1 = "-77.0353"
-      let ang1 = "45"
-      let lat2 = "34.0522"
-      let lng2 = "-118.2437"
-      let ang2 = "60"
-      let url = "http://localhost:4000/?lat1=" + lat1 + "&lng1=" + lng1 + "&ang1=" + ang1 + "&lat2=" + lat2 + "&lng2=" + lng2 + "&ang2=" + ang2
-
-      fetch(url, requestOptions)
-        .then(response => response.text())
-        .then(result => console.log("triangulation.js working: " + result))
-        .catch(error => console.log('error', error));
-}
-
-function testHeading() {
-    var requestOptions = {
-        method: 'GET',
-        redirect: 'follow'
-      };
-
-      let lat1 = "38.1269194"
-      let lng1 = "-85.6532982"
-      let ang1 = "50"
-      let dist1 = "50"
-      let url = "http://localhost:5000/?lat1=" + lat1 + "&lng1=" + lng1 + "&ang1=" + ang1 + "&dist1=" + dist1
-
-      fetch(url, requestOptions)
-        .then(response => response.text())
-        .then(result => console.log("heading.js working: " + result))
-        .catch(error => console.log('error', error));
-}
-
-function testAPIs(){
-    testTriangulate()
-    testHeading()
-}
-
 function addPos1() {
     streetLat1 = Math.round(streetLat * 100000) / 100000
     streetLng1 = Math.round(streetLng * 100000) / 100000
@@ -207,7 +164,7 @@ function addPath2(){
         }
 }
 
-function startMe(){
-    document.getElementById('padding').style.display = 'none'
-    document.getElementById('mainDiv').classList.toggle('is-hidden')
-}
+// function startMe(){
+//     document.getElementById('padding').style.display = 'none'
+//     document.getElementById('mainDiv').classList.toggle('is-hidden')
+// }
