@@ -40,18 +40,27 @@ h1 {
     text-align-last: center;
     min-height: 500px;
     height: fit-content;
-    padding-bottom: 30px;
+    width: 100%;
+    /* padding-bottom: 30px; */
     width: calc(100%-40px);
     box-shadow: 8px 8px 5px rgba(0, 0, 0, 0.322);
     border-radius: 4px;
+    background-image: url('/start-background.jpg');
+    background-size: cover;
 }
 
 #textBox {
-    padding: 30px;
+    background-color: white;
+    box-sizing: border-box;
+    padding: 20px;
     font-size: 20px;
+    margin: 20px;
     width: 80%;
+    box-shadow: 8px 8px 5px rgba(0, 0, 0, 0.322);
+    border-radius: 4px;
     justify-self: center;
     text-align: center;
+    max-width: 700px;
 }
 
 #startButton {
@@ -61,6 +70,7 @@ h1 {
     align-items: center;
     justify-items: center;
     color: white;
+    margin-bottom: 20px;
     background-color: #42db56;
     border-color: #087e18;
     border-radius: 8px;
