@@ -98,6 +98,27 @@ h1 {
     display: none;
 }
 
+#pac-input {
+    background-color: #fff;
+    border-radius: 5px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+    margin: 10px;
+    padding: 0 11px 0 13px;
+    text-overflow: ellipsis;
+    width: calc(85% - 280px);
+    visibility: visible;
+    position:absolute;
+    left: 215px;
+    top: 12px;
+    z-index: 10;
+  }
+  
+  #pac-input:focus {
+    border-color: #4d90fe;
+  }
+
 #mapContainer,#infoContainer{
     /* box-sizing: border-box; */
     position: relative;
@@ -140,6 +161,17 @@ h1 {
     top: 80px;
 }
 
+#resetButton{
+    cursor: pointer;
+    /* display: block; */
+    font-family: "Roboto", sans-serif;
+    z-index: 1000000;
+    margin: 10px;
+    position:absolute;
+    left: 12px;
+    bottom: 30px;
+}
+
 #pos1Button,#pos2Button {
     background-color: rgb(255,255,255);
     background-clip: padding-box;
@@ -179,6 +211,23 @@ h1 {
     visibility: hidden;
 }
 
+footer {
+    margin-top: 30px;
+    justify-self: center;
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+a:hover {
+    color: rgb(255, 145, 0);
+}
+
 @media (max-width: 800px) {
     #mainDiv {
         width: 100%;
@@ -187,8 +236,5 @@ h1 {
     #mapContainer,#infoContainer {
         width: 100%;
         box-sizing: border-box;
-    }
-    #paddingMobile {
-        display: block;
     }
 }

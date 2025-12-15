@@ -71,6 +71,65 @@ async function initMap() {
 
     });
 
+
+
+    // const input = document.getElementById("pac-input");
+    // const searchBox = new google.maps.places.SearchBox(input);
+  
+    // map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+    // map.addListener("bounds_changed", () => {
+    //   searchBox.setBounds(map.getBounds());
+    // });
+
+    // let markers = [];
+
+    // searchBox.addListener("places_changed", () => {
+    //   const places = searchBox.getPlaces();
+  
+    //   if (places.length == 0) {
+    //     return;
+    //   }
+  
+    //   markers.forEach((marker) => {
+    //     marker.setMap(null);
+    //   });
+    //   markers = [];
+  
+    //   const bounds = new google.maps.LatLngBounds();
+  
+    //   places.forEach((place) => {
+    //     if (!place.geometry || !place.geometry.location) {
+    //       console.log("Returned place contains no geometry");
+    //       return;
+    //     }
+  
+    //     const icon = {
+    //       url: place.icon,
+    //       size: new google.maps.Size(71, 71),
+    //       origin: new google.maps.Point(0, 0),
+    //       anchor: new google.maps.Point(17, 34),
+    //       scaledSize: new google.maps.Size(25, 25),
+    //     };
+  
+    //     markers.push(
+    //       new google.maps.Marker({
+    //         map,
+    //         icon,
+    //         title: place.name,
+    //         position: place.geometry.location,
+    //       }),
+    //     );
+    //     if (place.geometry.viewport) {
+    //       bounds.union(place.geometry.viewport);
+    //     } else {
+    //       bounds.extend(place.geometry.location);
+    //     }
+    //   });
+    //   map.fitBounds(bounds);
+    // });
+
+
+
     // innerMap = map.innerMap
     // innerMap.setOptions({
     //     mapTypeControl: false,
@@ -97,9 +156,11 @@ async function initMap() {
         if (this.getVisible()) {
             document.getElementById("crosshair").style.visibility = "visible"
             document.getElementById("buttonDiv").style.visibility = "visible"
+            document.getElementById("pac-input").style.visibility = "hidden"
         } else {
             document.getElementById("crosshair").style.visibility = "hidden"
             document.getElementById("buttonDiv").style.visibility = "hidden"
+            document.getElementById("pac-input").style.visibility = "visible"
         }
     });
 }
@@ -271,8 +332,26 @@ async function addMarkerPos3() {
     }
 }
 
-function reset(){
-    removePos1()
-    removePos2()
-    removePos3()
+async function reset() {
+    if (isPos1) {
+        marker1.setMap(null)
+        path1.setMap(null)
+        removePos1()
+        isPos1 = false
+    }
+    if (isPos2) {
+        marker2.setMap(null)
+        path2.setMap(null)
+        removePos2()
+        isPos2 = false
+    }
+    if (isPos3) {
+        marker3.setMap(null)
+        isPos3 = false
+    }
+    if (streetViewPanorama.getVisible()){
+        streetViewPanorama.setVisible(false)
+    }
+    map.setCenter({ lat: 38.246635658695055, lng:-85.76662857935253 })
+    map.setZoom(12)
 }

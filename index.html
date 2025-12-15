@@ -28,19 +28,21 @@
                 </div>
             </div>
             <div id="mainDiv" class="is-hidden">
-                <!-- <div id="paddingMobile"> -->
                     <div id="mapContainer">
+                        <input
+                        id="pac-input"
+                        class="controls"
+                        type="text"
+                        placeholder="Search Box"
+                        />
                         <div id="map"></div>
                         <div id="crosshair">+</div>
                         <div id="buttonDiv">
                             <button id="pos1Button" onclick=addMarkerPos1()>Set Pos 1</button>
                             <button id="pos2Button" onclick=addMarkerPos2()>Set Pos 2</button>
                         </div>
+                        <button id="resetButton" onclick=reset()>Reset</button>
                     </div>
-                <!-- </div> -->
-                <!-- <button onclick=returnCoords()>Test Coords</button>
-                <button onclick=testAPIs()>Test APIs</button> -->
-                <!-- <button onclick=reset()>Reset</button> -->
                 <div id="infoContainer">
                     <div id="info">
                         <div class="infoCard">
@@ -63,4 +65,11 @@
             <!-- <script src="maps.googleapis.com" defer></script>
             <script src="test.js"></script> -->
     </body>
+    <footer>
+        <div>Designed by Ethan Sherer</div>
+        <p></p>
+        <p>
+        <a href="https://ethansherer.github.io/index.html">Website</a> | <a href="https://www.linkedin.com/in/ethan-sherer/">LinkedIn</a>   |   <a href="https://github.com/ethansherer/">GitHub</a>
+        </p>
+    </footer>
 </html>
