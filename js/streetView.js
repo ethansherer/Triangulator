@@ -59,6 +59,7 @@ let isPos3 = false
 let pos3
 let lat3
 let lng3
+let elev3
 let pathHeading
 
 async function initMap() {
@@ -198,6 +199,7 @@ async function doTriangulate() {
     pos3 = await triangulate()
     lat3 = pos3[0]
     lng3 = pos3[1]
+    elev3 = altitude()
     addMarkerPos3()
 }
 

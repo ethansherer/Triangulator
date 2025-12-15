@@ -20,15 +20,18 @@ This project utilizes geographic position data (lattitude, longitude, and headin
 ### Installing
 
 * This repo can be cloned from https://github.com/ethansherer/Triangulator.git
-* A Google Javascript API Key is necessary in order to use this tool.  Sign up for one at https://developers.google.com/maps/documentation/javascript
+* A Google Javascript API Key is necessary in order to use this tool.  Sign up for one at https://developers.google.com/maps/documentation/javascript/get-api-key?setupProd=prerequisites
+* In order to obtain a Google API key, one must:
+  - Create a Google Cloud Account with billing enabled
+  - Enable the Maps Javascript API in the Google Cloud console
+  - Create an API key under the Google Maps Platform > Keys & Credentials page
 
 ### Executing program
 
 * Create 'key.js' file in the js/ folder containing a single line for your Google API key. (ie. const API_KEY="1234567890abcdefghijklmnop")
 * Install the express and cors packages using npm:
 ```
-npm install express
-npm install cors
+npm install
 ```
 * From the terminal window, start your local API server for triangulation:
 ```

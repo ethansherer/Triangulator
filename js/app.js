@@ -57,6 +57,7 @@ function addPos3() {
     pos3Ul = document.createElement('ul')
     pos3Ul.setAttribute('id','pos3Ul')
     pos3Ul.innerHTML += `<li><strong>Position</strong>: ${streetLat3},${streetLng3}</li>`
+    pos3Ul.innerHTML += `<li><strong>Estimated Height</strong>: ${elev3}</li>`
     pos3Container.appendChild(pos3Ul)
     hDistance1 = haversineDistance(streetLat1,streetLng1,streetLat3,streetLng3)
     hDistance1 = Math.round(hDistance1 * 100) / 100
@@ -164,7 +165,20 @@ function addPath2(){
         }
 }
 
-// function startMe(){
-//     document.getElementById('padding').style.display = 'none'
-//     document.getElementById('mainDiv').classList.toggle('is-hidden')
-// }
+function altitude(){
+    if(streetPitch1 > streetPitch2) {
+        angA = degToRad(streetPitch1)
+        angB = degToRad(180 - 90 - streetPitch1)
+        angC = degToRad(90)
+        distB = haversineDistance(streetLat1,streetLng1,lat3,lng3)
+        distC = (distB / Math.sin(angB)) * Math.sin(angC)
+        return Math.round((Math.sqrt(distC*distC - distB*distB) + 8.1) * 10)/10
+    } else {
+        angA = degToRad(streetPitch2)
+        angB = degToRad(180 - 90 - streetPitch2)
+        angC = degToRad(90)
+        distB = haversineDistance(streetLat2,streetLng2,lat3,lng3)
+        distC = (distB / Math.sin(angB)) * Math.sin(angC)
+        return Math.round((Math.sqrt(distC*distC - distB*distB) + 8.1)*10)/10
+    }
+}
